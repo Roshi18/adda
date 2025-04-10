@@ -9,7 +9,7 @@ on:
 jobs:
  lint:
   name: Lint Code (Python)
-  runs-on: ubuntu-lastest
+  runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v5
