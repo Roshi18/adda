@@ -1,2 +1,1 @@
-def main():
-  pass
+# Marks this directory as a package
