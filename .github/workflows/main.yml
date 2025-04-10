@@ -1,1 +1,35 @@
+name: Python CI/CD Pipeline
 
+on:
+ push:
+   branches: [main]
+ pull_request:
+   branches: [main]
+
+jobs:
+ lint:
+  name: Lint Code (Python)
+  runs-on: ubuntu-lastest
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v5
+      with: 
+        python-version: '3.11'
+    - run: pip install flake8
+    - name: Lint code
+      run: flake8 app/
+      
+ build:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5
+        with: 
+          python-version: '3.11'
+      - run: |
+          pip install -r requirements.txt
+          pytest
+
+   
+   
